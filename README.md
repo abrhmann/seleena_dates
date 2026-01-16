@@ -1,16 +1,132 @@
-# React + Vite
+# Seleena Dates - Premium Dates E-Commerce Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A beautiful, bilingual (English/Arabic) e-commerce website for selling premium dates with a full-featured admin panel.
 
-Currently, two official plugins are available:
+## 🌟 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Customer-Facing Features
+- **Bilingual Support**: Full English and Arabic language support with RTL layout
+- **Modern UI**: Premium design with smooth animations and glassmorphism effects
+- **Responsive Design**: Works perfectly on desktop, tablet, and mobile devices
+- **Product Showcase**: Beautiful product displays with detailed information
+- **Easy Navigation**: Intuitive navigation with language switcher
 
-## React Compiler
+### Admin Panel Features
+- **Secure Authentication**: Login system to protect admin access
+- **Dashboard Overview**: Quick stats on sales, orders, and products
+- **Product Management**: 
+  - Add new products with bilingual names
+  - Edit existing products
+  - Delete products
+  - Track stock levels
+- **Order Management**: View and track customer orders
+- **Protected Routes**: Secure admin area accessible only after login
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/abrhmann/seleena-dates.git
+cd seleena-dates
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Run the development server:
+```bash
+npm run dev
+```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## 🔐 Admin Access
+
+To access the admin panel:
+
+1. Navigate to `/admin/login`
+2. Use the following credentials:
+   - **Username**: `admin`
+   - **Password**: `seleena2024`
+
+**Note**: In production, replace this with a proper authentication system with secure password hashing.
+
+## 🛠️ Tech Stack
+
+- **Frontend Framework**: React 18
+- **Build Tool**: Vite
+- **Routing**: React Router DOM
+- **Internationalization**: i18next
+- **Icons**: Lucide React
+- **Styling**: Vanilla CSS with CSS Variables
+
+## 📁 Project Structure
+
+```
+seleena-dates/
+├── src/
+│   ├── components/       # Reusable components (Navbar, Footer, etc.)
+│   ├── pages/           # Page components (Home, Shop, Admin, etc.)
+│   ├── context/         # React Context for state management
+│   ├── assets/          # Images and static assets
+│   ├── App.jsx          # Main app component with routing
+│   ├── main.jsx         # Entry point
+│   ├── i18n.js          # Internationalization configuration
+│   └── index.css        # Global styles
+├── public/              # Public assets
+└── package.json         # Dependencies and scripts
+```
+
+## 🌐 Available Routes
+
+- `/` - Home page
+- `/shop` - Products shop page
+- `/about` - About page (coming soon)
+- `/admin/login` - Admin login page
+- `/admin/dashboard` - Admin dashboard (protected)
+
+## 🎨 Customization
+
+### Colors
+The color scheme can be customized in `src/index.css` using CSS variables:
+
+```css
+--color-primary: #c59764;  /* Gold/Bronze */
+--color-secondary: #8b4513; /* Brown */
+--color-bg: #faf8f5;       /* Light cream */
+--color-text: #2c1810;     /* Dark brown */
+```
+
+### Languages
+Add or modify translations in `src/i18n.js`
+
+## 📝 Future Enhancements
+
+- [ ] Shopping cart functionality
+- [ ] Payment gateway integration
+- [ ] Customer accounts and order history
+- [ ] Email notifications
+- [ ] Product reviews and ratings
+- [ ] Advanced search and filtering
+- [ ] Backend API integration
+- [ ] Database for persistent data storage
+
+## 📄 License
+
+This project is open source and available under the MIT License.
+
+## 👨‍💻 Author
+
+**Seleena Dates Team**
+
+---
+
+Made with ❤️ for premium date lovers worldwide 🌴
