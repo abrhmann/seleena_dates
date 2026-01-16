@@ -1,0 +1,125 @@
+.hero {
+    height: 80vh;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-top: -80px;
+    /* Overlap navbar if transparent, but navbar has background, so maybe not needed unless I make navbar transparent on home */
+    padding-top: 80px;
+    /* Compensate */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero p {
+    font-size: 1.25rem;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-outline-light {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-outline-light:hover {
+    background-color: white;
+    color: var(--color-primary);
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.section-subtitle {
+    color: var(--color-text-light);
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-img-placeholder {
+    height: 250px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #999;
+}
+
+.product-info {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+}
+
+.product-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+}
+
+.price {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.width-full {
+    width: 100%;
+    margin-top: auto;
+}
+
+.features-section {
+    background-color: var(--color-bg-alt);
+}
+
+.feature-item {
+    text-align: center;
+    padding: 2rem;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
