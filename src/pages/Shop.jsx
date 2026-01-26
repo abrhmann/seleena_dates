@@ -15,6 +15,7 @@ const Shop = () => {
     const [addingToCart, setAddingToCart] = useState({});
     const [addedItems, setAddedItems] = useState({});
     const [error, setError] = useState(null);
+    const [hasVariants, setHasVariants] = useState(false);
 
     useEffect(() => {
         fetchProducts();
@@ -23,7 +24,10 @@ const Shop = () => {
     const fetchProducts = async () => {
         try {
             setLoading(true);
-            const { data, error } = await supabase
+            setError(null);
+
+            // Try to fetch with variants first
+            const { data: variantData, error: variantError } = await supabase
                 .from('products')
                 .select(`
                     *,
@@ -36,8 +40,36 @@ const Shop = () => {
                 `)
                 .order('created_at', { ascending: false });
 
-            if (error) throw error;
-            setProducts(data || []);
+            // If variants table doesn't exist, fall back to products only
+            if (variantError && variantError.message.includes('product_variants')) {
+                console.warn('⚠️  product_variants table not found. Using fallback mode.');
+                setHasVariants(false);
+
+                const { data: basicData, error: basicError } = await supabase
+                    .from('products')
+                    .select('*')
+                    .order('created_at', { ascending: false });
+
+                if (basicError) throw basicError;
+
+                // Create fake variants from existing product data
+                const productsWithFakeVariants = basicData.map(product => ({
+                    ...product,
+                    product_variants: [{
+                        id: `fake-${product.id}`,
+                        weight_variant: '1kg',
+                        price: product.price,
+                        stock_quantity: product.stock || 100
+                    }]
+                }));
+
+                setProducts(productsWithFakeVariants);
+            } else if (variantError) {
+                throw variantError;
+            } else {
+                setHasVariants(true);
+                setProducts(variantData || []);
+            }
         } catch (err) {
             console.error('Error fetching products:', err);
             setError(err.message);
@@ -52,6 +84,16 @@ const Shop = () => {
         setError(null);
 
         try {
+            // For fake variants (no migration run), show error message
+            if (!hasVariants) {
+                setError(t('cart.migractionNeeded', {
+                    defaultValue: 'Please run database migration first! See setup instructions.'
+                }));
+                setTimeout(() => setError(null), 5000);
+                setAddingToCart(prev => ({ ...prev, [key]: false }));
+                return;
+            }
+
             const result = await addToCart(product.id, variant.id, 1);
 
             if (result.success) {
@@ -64,9 +106,11 @@ const Shop = () => {
                 }, 2000);
             } else {
                 setError(result.error || t('cart.addError'));
+                setTimeout(() => setError(null), 5000);
             }
         } catch (err) {
             setError(err.message);
+            setTimeout(() => setError(null), 5000);
         } finally {
             setAddingToCart(prev => ({ ...prev, [key]: false }));
         }
@@ -74,8 +118,9 @@ const Shop = () => {
 
     if (loading) {
         return (
-            <div className="section" style={{ minHeight: '100vh', paddingTop: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="section" style={{ minHeight: '100vh', paddingTop: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '20px' }}>
                 <Loader className="spinner" size={48} />
+                <p>{t('loading', { defaultValue: 'Loading products...' })}</p>
             </div>
         );
     }
@@ -88,13 +133,25 @@ const Shop = () => {
                     <p>{t('shop.subtitle')}</p>
                 </div>
 
+                {/* Migration Warning */}
+                {!hasVariants && (
+                    <div className="alert alert-warning" style={{ marginBottom: '24px', background: 'rgba(234, 179, 8, 0.1)', border: '2px solid rgb(234, 179, 8)', color: 'rgb(161, 98, 7)' }}>
+                        <AlertCircle size={20} />
+                        <div>
+                            <strong>Database Setup Required</strong>
+                            <p>To enable the shopping cart, please run:  <code>node setup_database.js</code></p>
+                            <p>Then follow the instructions to run the migration in Supabase.</p>
+                        </div>
+                    </div>
+                )}
+
                 {/* Cart Summary */}
                 {getCartCount() > 0 && (
                     <div className="cart-summary-banner">
                         <div className="cart-summary-content">
                             <ShoppingCart size={24} />
                             <span>
-                                {t('cart.itemsInCart', { count: getCartCount() })}
+                                {t('cart.itemsInCart', { count: getCartCount(), defaultValue: `${getCartCount()} items in cart` })}
                             </span>
                             <button
                                 className="btn btn-primary btn-sm"
@@ -128,7 +185,7 @@ const Shop = () => {
                                         src={product.image_url || '/hero-dates.png'}
                                         alt={i18n.language === 'ar' ? product.name_ar : product.name_en}
                                     />
-                                    {product.product_variants && product.product_variants.length > 0 && (
+                                    {product.product_variants && product.product_variants.length > 1 && (
                                         <div className="variant-badge">
                                             {product.product_variants.length} {t('shop.sizes')}
                                         </div>
