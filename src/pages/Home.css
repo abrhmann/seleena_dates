@@ -1,125 +1,279 @@
+.home {
+    overflow-x: hidden;
+}
+
 .hero {
-    height: 80vh;
-    min-height: 500px;
+    height: 100vh;
+    min-height: 700px;
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     color: white;
-    margin-top: -80px;
-    /* Overlap navbar if transparent, but navbar has background, so maybe not needed unless I make navbar transparent on home */
-    padding-top: 80px;
-    /* Compensate */
+    text-align: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+    z-index: 1;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(to top, var(--color-bg), transparent);
+    z-index: 2;
 }
 
 .hero-content {
     position: relative;
     z-index: 10;
-    max-width: 800px;
+    max-width: 900px;
+    padding: 0 1rem;
+}
+
+.hero-tagline {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+    color: var(--color-gold-light);
+    font-weight: 600;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: clamp(2.5rem, 8vw, 5rem);
     margin-bottom: 1.5rem;
+    line-height: 1.1;
+    font-weight: 700;
     color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .hero p {
-    font-size: 1.25rem;
-    margin-bottom: 2.5rem;
-    max-width: 600px;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+    color: white;
 }
 
 .hero-buttons {
     display: flex;
-    gap: 1rem;
+    gap: 1.5rem;
+    justify-content: center;
 }
 
-.btn-outline-light {
+.btn-outline-white {
     background-color: transparent;
     border: 2px solid white;
     color: white;
 }
 
-.btn-outline-light:hover {
+.btn-outline-white:hover {
     background-color: white;
     color: var(--color-primary);
 }
 
-.section-title {
-    font-size: 2.5rem;
-    margin-bottom: 0.5rem;
-    text-align: center;
+/* Variety Circles */
+.variety-section {
+    position: relative;
+    z-index: 5;
+    margin-top: -100px;
+    padding-bottom: 4rem;
 }
 
-.section-subtitle {
-    color: var(--color-text-light);
-    margin-bottom: 3rem;
-    text-align: center;
+.variety-grid {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
 }
 
-.product-card {
+.variety-card {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.product-img-placeholder {
-    height: 250px;
-    background-color: #eee;
+.variety-card:hover {
+    transform: translateY(-10px);
+}
+
+.variety-img-wrapper {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    background-color: white;
+    padding: 10px;
+    box-shadow: var(--shadow-lg);
+    border: 3px solid var(--color-gold);
+    margin-bottom: 1rem;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #999;
 }
 
-.product-info {
-    padding: 1.5rem;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+.variety-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-.product-rating {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    margin-bottom: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--color-text-light);
-}
-
-.product-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: 0.5rem;
+.variety-card h4 {
     font-family: var(--font-sans);
-    color: var(--color-text);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-primary);
 }
 
-.price {
-    color: var(--color-primary);
-    font-weight: 700;
-    font-size: 1.1rem;
+/* Section styling */
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-header h2 {
+    font-size: 3rem;
     margin-bottom: 1rem;
 }
 
-.width-full {
-    width: 100%;
-    margin-top: auto;
+.section-header p {
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
 }
 
-.features-section {
-    background-color: var(--color-bg-alt);
+/* Product grid helper */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2.5rem;
+}
+
+/* Heritage Section */
+.heritage-container {
+    background-color: #fdfaf6;
+    padding: 6rem 0;
+}
+
+.heritage-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.heritage-text h2 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+}
+
+.feature-list {
+    display: grid;
+    gap: 2rem;
 }
 
 .feature-item {
-    text-align: center;
-    padding: 2rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
 }
 
-.feature-icon {
-    font-size: 3rem;
-    margin-bottom: 1.5rem;
+.icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    background-color: var(--color-sand);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-gold-dark);
+    flex-shrink: 0;
+}
+
+.feature-info h4 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.feature-info p {
+    color: var(--color-text-light);
+}
+
+.heritage-image {
+    position: relative;
+}
+
+.heritage-image-main {
+    border-radius: 40px;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+}
+
+.heritage-float-card {
+    position: absolute;
+    bottom: -2rem;
+    left: -2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: var(--shadow-lg);
+    max-width: 250px;
+}
+
+.heritage-float-card p {
+    font-style: italic;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-light);
+}
+
+.discover-link {
+    color: var(--color-primary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 968px) {
+    .heritage-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .variety-grid {
+        gap: 1.5rem;
+    }
+
+    .variety-img-wrapper {
+        width: 100px;
+        height: 100px;
+    }
 }

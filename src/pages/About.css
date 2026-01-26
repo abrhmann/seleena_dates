@@ -1,0 +1,188 @@
+.about-page {
+    overflow-x: hidden;
+}
+
+.about-hero {
+    height: 60vh;
+    min-height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1590611380053-999330689bf1?auto=format&fit=crop&q=80&w=1200');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.about-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-hero .subtitle {
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.875rem;
+    color: var(--color-gold-light);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.about-hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.about-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+    line-height: 1.8;
+}
+
+.about-section {
+    padding: 8rem 0;
+    background-color: white;
+}
+
+.story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+}
+
+.story-image {
+    position: relative;
+}
+
+.story-image img {
+    width: 100%;
+    border-radius: 40px;
+    box-shadow: var(--shadow-lg);
+}
+
+.experience-badge {
+    position: absolute;
+    bottom: -2rem;
+    right: -2rem;
+    background: linear-gradient(135deg, var(--color-gold), var(--color-gold-dark));
+    color: white;
+    padding: 2.5rem;
+    border-radius: 30px;
+    text-align: center;
+    box-shadow: var(--shadow-gold);
+    animation: fadeIn 1s ease-out;
+}
+
+.experience-badge strong {
+    display: block;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.experience-badge span {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.story-content h2 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+.story-content p {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    margin-top: 3rem;
+}
+
+.value-item h4 {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    margin: 1rem 0 0.5rem;
+}
+
+.value-item p {
+    font-size: 0.9375rem;
+    margin-bottom: 0;
+}
+
+.philosophy {
+    background-color: var(--color-sand);
+    border-radius: 60px;
+    margin: 0 2rem 4rem;
+    padding: 6rem 0;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 3rem;
+    margin-top: 4rem;
+}
+
+.phi-card {
+    padding: 3rem;
+    background: white;
+    border-radius: 30px;
+    transition: all 0.4s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.phi-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.phi-icon {
+    width: 64px;
+    height: 64px;
+    background-color: var(--color-bg);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+}
+
+.phi-card h3 {
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.phi-card p {
+    color: var(--color-text-light);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 968px) {
+    .story-grid {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .experience-badge {
+        position: static;
+        margin-top: 2rem;
+        border-radius: 20px;
+    }
+
+    .philosophy {
+        margin: 0 1rem 2rem;
+        border-radius: 30px;
+    }
+}

@@ -27,7 +27,7 @@ const resources = {
             "contactUs": "Contact Us",
             "followUs": "Follow Us",
             "rights": "All rights reserved.",
-            "currency": "SAR",
+            "currency": "EGP",
             "adminPanel": "Admin Panel",
             "totalSales": "Total Sales",
             "totalOrders": "Total Orders",
@@ -58,7 +58,7 @@ const resources = {
     ar: {
         translation: {
             "welcome": "جرب المذاق الملكي لتمور <1>سيلينا</1>",
-            "subtitle": "تمور مجدول مختارة بعناية من قلب الجزيرة العربية. جودة عالية وطزاجة لا تضاهى.",
+            "subtitle": "تمور مجدول مختارة بعناية من قلب الواحات المصرية. جودة عالية وطزاجة لا تضاهى.",
             "shopNow": "تسوق الآن",
             "ourStory": "قصتنا",
             "bestSellers": "الأكثر مبيعاً",
@@ -80,7 +80,7 @@ const resources = {
             "contactUs": "اتصل بنا",
             "followUs": "تابعنا",
             "rights": "جميع الحقوق محفوظة.",
-            "currency": "ر.س",
+            "currency": "ج.م",
             "adminPanel": "لوحة التحكم",
             "totalSales": "إجمالي المبيعات",
             "totalOrders": "إجمالي الطلبات",

@@ -5,10 +5,13 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
+import About from './pages/About';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminLogin from './pages/AdminLogin';
 import ProtectedRoute from './components/ProtectedRoute';
 import './index.css';
+
+import { MessageCircle } from 'lucide-react';
 
 const PublicLayout = () => {
   return (
@@ -16,6 +19,15 @@ const PublicLayout = () => {
       <Navbar />
       <Outlet />
       <Footer />
+      <a
+        href="https://wa.me/201061031514"
+        className="floating-whatsapp"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="WhatsApp"
+      >
+        <MessageCircle size={32} />
+      </a>
     </>
   );
 };
@@ -35,7 +47,7 @@ function App() {
         <Route element={<PublicLayout />}>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
-          <Route path="/about" element={<div className="container section"><h1>Our Story</h1><p>Coming soon...</p></div>} />
+          <Route path="/about" element={<About />} />
         </Route>
 
         {/* Admin Routes */}

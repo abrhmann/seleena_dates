@@ -28,18 +28,18 @@ const Footer = () => {
                     <div className="footer-col">
                         <h4>{t('contactUs')}</h4>
                         <ul className="contact-list">
-                            <li><MapPin size={16} /> 123 Date Palm Ave, Riyadh</li>
-                            <li><Phone size={16} /> +966 50 000 0000</li>
-                            <li><Mail size={16} /> hello@seleenadates.com</li>
+                            <li><MapPin size={16} /> Bahria Oasis, Egypt</li>
+                            <li><Phone size={16} /> <a href="tel:+201061031514">+20 106 103 1514</a></li>
+                            <li><Mail size={16} /> <a href="mailto:seleenadates@gmail.com">seleenadates@gmail.com</a></li>
                         </ul>
                     </div>
 
                     <div className="footer-col">
                         <h4>{t('followUs')}</h4>
                         <div className="social-icons">
+                            <a href="https://wa.me/201061031514" target="_blank" rel="noopener noreferrer" className="whatsapp-icon"><Phone size={20} /></a>
                             <a href="#"><Instagram size={20} /></a>
                             <a href="#"><Facebook size={20} /></a>
-                            <a href="#"><Twitter size={20} /></a>
                         </div>
                     </div>
                 </div>
