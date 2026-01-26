@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Heart, ShieldCheck, TreePalm, Droplets } from 'lucide-react';
+import { Heart, ShieldCheck, Palmtree, Droplets } from 'lucide-react';
 import './About.css';
 
 const About = () => {
@@ -45,7 +45,7 @@ const About = () => {
 
                             <div className="values-grid">
                                 <div className="value-item">
-                                    <TreePalm className="text-gold" size={32} />
+                                    <Palmtree className="text-gold" size={32} />
                                     <h4>Organic Growth</h4>
                                     <p>No pesticides or chemicals. Just sun, water, and soil.</p>
                                 </div>
